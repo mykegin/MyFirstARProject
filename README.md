@@ -11,6 +11,10 @@ It serves as both a showcase and a reference for my ongoing laboratories and pro
 - **C# Scripts**
 - **Blender / 3D Assets** 
 
-## Contributors:
-Ginghina Mihai (A2)
-Acasandrei Nicu-Alexandru (E1)
+## 🧠 Contributors:
+- Ginghina Mihai (A2)
+- Acasandrei Nicu-Alexandru (E1)
+
+## 🧰 Repository Structure
+- Tema1: First homework that helped us learn Unity basics, the asset store, vuforia engine and the animator.
+- Video Tema1: Video showcase of our first homework.
