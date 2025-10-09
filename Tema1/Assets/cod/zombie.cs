@@ -21,17 +21,17 @@ public class MonsterProximityAttackAR : MonoBehaviour
     private bool scaled = false;
     private static bool someoneScaled = false;
 
-    void OnEnable() // adaug mosntrul in lista cand apare pe ecran (e activat gen)
+    void OnEnable() // Adding the monster to the list once he appears on the screen
     {
         if (!all.Contains(this)) all.Add(this);
     }
 
-    void OnDisable()
+    void OnDisable() // Removing the monster from the list once he disappears from the screen
     {
-        all.Remove(this); // elimin monstrul
+        all.Remove(this);
     }
 
-    void Awake() //pt aminator
+    void Awake() // To get the animator component
     {
         anim = GetComponent<Animator>();
         if (anim == null && allowFindInChildren)
@@ -44,9 +44,13 @@ public class MonsterProximityAttackAR : MonoBehaviour
     }
 
     void Update()
-        // aici fac verificarile constante, daca e doar un mosntru se uita la ecran
-        // daca sunt 2 mosntri, ii fac sa se uite unul la altul
-        // daca sunt aproape se bat
+
+        /*
+        Here are made to following checks: 
+         - if there is only one monster it looks at the screen
+         - if there are multiple monsters they look at eachother
+         - if they are close enough they start fighting
+        */
     {
         if (anim == null) return;
         if (requireTracked && !IsTracked())
@@ -71,7 +75,7 @@ public class MonsterProximityAttackAR : MonoBehaviour
         LookAtTarget(other);
     }
 
-    void HandleAttack(bool should) //delay random pt atacuri
+    void HandleAttack(bool should) // Setting random delays for attacks
     {
         if (should)
         {
@@ -93,7 +97,7 @@ public class MonsterProximityAttackAR : MonoBehaviour
         }
     }
 
-    IEnumerator AttackCycle(float delay) // contorizare atacuri, astepatre, verificari de atac
+    IEnumerator AttackCycle(float delay) // Attack counter
     {
         waiting = true;
         yield return new WaitForSeconds(delay);
@@ -124,7 +128,7 @@ public class MonsterProximityAttackAR : MonoBehaviour
         }
     }
 
-    MonsterProximityAttackAR GetNearest() // cel mai apropiat monstur cautare
+    MonsterProximityAttackAR GetNearest() // Searching for the nearest monster
     {
         MonsterProximityAttackAR near = null;
         float min = float.MaxValue;
@@ -201,7 +205,7 @@ public class MonsterProximityAttackAR : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected() //raza de atac
+    void OnDrawGizmosSelected() // Attacking range visualization
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enterAttackRange);
