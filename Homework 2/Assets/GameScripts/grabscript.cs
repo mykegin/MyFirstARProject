@@ -20,5 +20,25 @@ public class HandAnimationController : MonoBehaviour
         {
             anim.SetBool("isGrabbing", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            anim.SetBool("isDante", true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            anim.SetBool("isDante", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            anim.SetBool("isTrigger", true);
+        }
+
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            anim.SetBool("isTrigger", false);
+        }
     }
 }
